@@ -1,0 +1,21 @@
+! Configuration File for keepalived
+
+global_defs {
+   smtp_server localhost
+   smtp_connect_timeout 30
+}
+
+vrrp_instance VI_1 {
+    state **MASTER/SLAVE**
+    interface **INSERT WAN INTERFACE**
+    virtual_router_id 101
+    priority **SET PRIORITY, HIGHEST BEING 254**
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass 1111
+    }
+    virtual_ipaddress {
+        **INSERT VIRTUAL IP ADDRESS TO BE SHARED**
+    }
+}
